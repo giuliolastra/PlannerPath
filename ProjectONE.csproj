@@ -65,9 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attr.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GUI\CalculusManagerControl.cs" />
     <Compile Include="GUI\CreateTreeControl.cs" />
+    <Compile Include="Uploader.cs" />
     <Compile Include="Utility\Attribute.cs" />
     <Compile Include="GUI\CalculusManagerForm.cs">
       <SubType>Form</SubType>
@@ -163,10 +165,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="logomic.ico" />
-    <Content Include="MicronTree.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

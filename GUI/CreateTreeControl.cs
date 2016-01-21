@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectONE.Utility;
 
@@ -17,26 +14,20 @@ namespace ProjectONE.GUI
         {
             this.Path = path;
 
-            //da sostituire
             this.TempTree = new Tree(depth, splitsize, vertexesAttributes, edgesAttributes, true);
             this.TempTree.type = treetype;
 
-           /* generateRandomVertexAttributes(vertexesAttributes);
-            generateRandomVertexAttributes(edgesAttributes); TODO Agostino*/
+            Engine engine = new Engine();
+
             if(generateTreeFile() == false)
                 MessageBox.Show("Problems while storing file into file");
             else
                 MessageBox.Show("Your tree is in the file");
-            if(uploadTree() == false)
+            if(!engine.uploadTree(this.TempTree.getXMLPath()))
                 MessageBox.Show("Problems while uploading tree to database");
             else
                 MessageBox.Show("Your tree is on the Database");
-        }
 
-        public bool uploadTree()
-        {
-            //new Engine();....
-            return true; //TODO update
         }
 
         public bool generateTreeFile()

@@ -22,6 +22,12 @@ namespace ProjectONE.Utility
         LinkedList<Attribute> VertexAttributes { get; set; } //list of attributes that Vertexs have
         LinkedList<Attribute> EdgeAttributes { get; set; } //list of attributes that Vertexs have
         XmlTextWriter fileWriter;
+        String XMLPath;
+
+        public String getXMLPath() {
+            Console.WriteLine(this.XMLPath);
+            return this.XMLPath;
+        }
 
         public Tree(int splitSize, int depth) {
             this.SplitSize = splitSize;
@@ -101,11 +107,17 @@ namespace ProjectONE.Utility
 
             if (path.EndsWith("/") == false && path.EndsWith("\\") == false)
             {
-                completepath = path + "\\" + this.type;
+                completepath = path + "\\" + fileName;
+                this.XMLPath = completepath;
+                Console.WriteLine("Sono in tree ed il path e':"+this.XMLPath);
             }
             else {
-                completepath = path + this.type;
+                completepath = path + fileName;
+                this.XMLPath = completepath;
+                Console.WriteLine("Sono in tree ed il path e':"+this.XMLPath);
             }
+
+            this.XMLPath = completepath;
 
             this.fileWriter = new XmlTextWriter(completepath, Encoding.ASCII);
             this.fileWriter.Formatting = Formatting.Indented;
