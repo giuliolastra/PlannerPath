@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTreeForm));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_tree_name = new System.Windows.Forms.TextBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txt_destination_folder = new System.Windows.Forms.TextBox();
+            this.txt_depth = new System.Windows.Forms.TextBox();
+            this.txt_split_size = new System.Windows.Forms.TextBox();
+            this.btn_create_tree = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,51 +44,51 @@
             this.label6 = new System.Windows.Forms.Label();
             this.listbox_vertexattr = new System.Windows.Forms.ListBox();
             this.listbox_edgeattr = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_plus_vertex = new System.Windows.Forms.Button();
+            this.btn_plus_edge = new System.Windows.Forms.Button();
+            this.btn_minus_vertex = new System.Windows.Forms.Button();
+            this.btn_minus_edge = new System.Windows.Forms.Button();
+            this.btn_choose_ct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txt_tree_name
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 20);
-            this.textBox1.TabIndex = 0;
+            this.txt_tree_name.Location = new System.Drawing.Point(110, 45);
+            this.txt_tree_name.Name = "txt_tree_name";
+            this.txt_tree_name.Size = new System.Drawing.Size(240, 20);
+            this.txt_tree_name.TabIndex = 0;
             // 
-            // textBox2
+            // txt_destination_folder
             // 
-            this.textBox2.Location = new System.Drawing.Point(110, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 20);
-            this.textBox2.TabIndex = 1;
+            this.txt_destination_folder.Location = new System.Drawing.Point(110, 71);
+            this.txt_destination_folder.Name = "txt_destination_folder";
+            this.txt_destination_folder.Size = new System.Drawing.Size(159, 20);
+            this.txt_destination_folder.TabIndex = 1;
             // 
-            // textBox3
+            // txt_depth
             // 
-            this.textBox3.Location = new System.Drawing.Point(275, 100);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(75, 20);
-            this.textBox3.TabIndex = 4;
+            this.txt_depth.Location = new System.Drawing.Point(275, 100);
+            this.txt_depth.Name = "txt_depth";
+            this.txt_depth.Size = new System.Drawing.Size(75, 20);
+            this.txt_depth.TabIndex = 4;
             // 
-            // textBox4
+            // txt_split_size
             // 
-            this.textBox4.Location = new System.Drawing.Point(110, 100);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(75, 20);
-            this.textBox4.TabIndex = 3;
+            this.txt_split_size.Location = new System.Drawing.Point(110, 100);
+            this.txt_split_size.Name = "txt_split_size";
+            this.txt_split_size.Size = new System.Drawing.Size(75, 20);
+            this.txt_split_size.TabIndex = 3;
             // 
-            // button2
+            // btn_create_tree
             // 
-            this.button2.Location = new System.Drawing.Point(179, 148);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 32);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Create tree";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.generateTree);
+            this.btn_create_tree.Location = new System.Drawing.Point(179, 148);
+            this.btn_create_tree.Name = "btn_create_tree";
+            this.btn_create_tree.Size = new System.Drawing.Size(90, 32);
+            this.btn_create_tree.TabIndex = 5;
+            this.btn_create_tree.Text = "Create tree";
+            this.btn_create_tree.UseVisualStyleBackColor = true;
+            this.btn_create_tree.Click += new System.EventHandler(this.generateTree);
             // 
             // label1
             // 
@@ -160,65 +160,65 @@
             this.listbox_edgeattr.Size = new System.Drawing.Size(150, 82);
             this.listbox_edgeattr.TabIndex = 13;
             // 
-            // button3
+            // btn_plus_vertex
             // 
-            this.button3.Location = new System.Drawing.Point(530, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(20, 23);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "+";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.PlusVertexAttributeClicked);
+            this.btn_plus_vertex.Location = new System.Drawing.Point(530, 48);
+            this.btn_plus_vertex.Name = "btn_plus_vertex";
+            this.btn_plus_vertex.Size = new System.Drawing.Size(20, 23);
+            this.btn_plus_vertex.TabIndex = 14;
+            this.btn_plus_vertex.Text = "+";
+            this.btn_plus_vertex.UseVisualStyleBackColor = true;
+            this.btn_plus_vertex.Click += new System.EventHandler(this.PlusVertexAttributeClicked);
             // 
-            // button4
+            // btn_plus_edge
             // 
-            this.button4.Location = new System.Drawing.Point(530, 153);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(20, 23);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "+";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.PlusEdgeAttributeClicked);
+            this.btn_plus_edge.Location = new System.Drawing.Point(530, 153);
+            this.btn_plus_edge.Name = "btn_plus_edge";
+            this.btn_plus_edge.Size = new System.Drawing.Size(20, 23);
+            this.btn_plus_edge.TabIndex = 15;
+            this.btn_plus_edge.Text = "+";
+            this.btn_plus_edge.UseVisualStyleBackColor = true;
+            this.btn_plus_edge.Click += new System.EventHandler(this.PlusEdgeAttributeClicked);
             // 
-            // button5
+            // btn_minus_vertex
             // 
-            this.button5.Location = new System.Drawing.Point(530, 74);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(20, 23);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "-";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.MinusVertexAttributeClicked);
+            this.btn_minus_vertex.Location = new System.Drawing.Point(530, 74);
+            this.btn_minus_vertex.Name = "btn_minus_vertex";
+            this.btn_minus_vertex.Size = new System.Drawing.Size(20, 23);
+            this.btn_minus_vertex.TabIndex = 16;
+            this.btn_minus_vertex.Text = "-";
+            this.btn_minus_vertex.UseVisualStyleBackColor = true;
+            this.btn_minus_vertex.Click += new System.EventHandler(this.MinusVertexAttributeClicked);
             // 
-            // button6
+            // btn_minus_edge
             // 
-            this.button6.Location = new System.Drawing.Point(530, 182);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(20, 23);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "-";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.MinusEdgeAttributeClicked);
+            this.btn_minus_edge.Location = new System.Drawing.Point(530, 182);
+            this.btn_minus_edge.Name = "btn_minus_edge";
+            this.btn_minus_edge.Size = new System.Drawing.Size(20, 23);
+            this.btn_minus_edge.TabIndex = 17;
+            this.btn_minus_edge.Text = "-";
+            this.btn_minus_edge.UseVisualStyleBackColor = true;
+            this.btn_minus_edge.Click += new System.EventHandler(this.MinusEdgeAttributeClicked);
             // 
-            // button1
+            // btn_choose_ct
             // 
-            this.button1.Location = new System.Drawing.Point(275, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Choose";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.chooseDirectory);
+            this.btn_choose_ct.Location = new System.Drawing.Point(275, 71);
+            this.btn_choose_ct.Name = "btn_choose_ct";
+            this.btn_choose_ct.Size = new System.Drawing.Size(75, 23);
+            this.btn_choose_ct.TabIndex = 2;
+            this.btn_choose_ct.Text = "Choose";
+            this.btn_choose_ct.UseVisualStyleBackColor = true;
+            this.btn_choose_ct.Click += new System.EventHandler(this.chooseDirectory);
             // 
             // CreateTreeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 261);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_minus_edge);
+            this.Controls.Add(this.btn_minus_vertex);
+            this.Controls.Add(this.btn_plus_edge);
+            this.Controls.Add(this.btn_plus_vertex);
             this.Controls.Add(this.listbox_edgeattr);
             this.Controls.Add(this.listbox_vertexattr);
             this.Controls.Add(this.label6);
@@ -227,12 +227,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_create_tree);
+            this.Controls.Add(this.txt_split_size);
+            this.Controls.Add(this.txt_depth);
+            this.Controls.Add(this.txt_destination_folder);
+            this.Controls.Add(this.txt_tree_name);
+            this.Controls.Add(this.btn_choose_ct);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateTreeForm";
             this.Text = "Create Tree";
@@ -243,12 +243,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_tree_name;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txt_destination_folder;
+        private System.Windows.Forms.TextBox txt_depth;
+        private System.Windows.Forms.TextBox txt_split_size;
+        private System.Windows.Forms.Button btn_create_tree;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -257,10 +257,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listbox_vertexattr;
         private System.Windows.Forms.ListBox listbox_edgeattr;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_plus_vertex;
+        private System.Windows.Forms.Button btn_plus_edge;
+        private System.Windows.Forms.Button btn_minus_vertex;
+        private System.Windows.Forms.Button btn_minus_edge;
+        private System.Windows.Forms.Button btn_choose_ct;
     }
 }

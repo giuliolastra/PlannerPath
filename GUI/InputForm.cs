@@ -18,9 +18,9 @@ namespace ProjectONE.GUI
         public InputForm(String t, CreateTreeForm f1ref)
         {
             InitializeComponent();
-            comboBox1.Items.Add("String");
-            comboBox1.Items.Add("Integer");
-            comboBox1.SelectedIndex = 0;
+            cmb_tipo_attributo.Items.Add("String");
+            cmb_tipo_attributo.Items.Add("Integer");
+            cmb_tipo_attributo.SelectedIndex = 0;
             type = t;
             this.CreateTreeForm = f1ref;
         }
@@ -30,8 +30,8 @@ namespace ProjectONE.GUI
             ComboBox cb = (ComboBox)sender;
             if (cb.SelectedText != "String")
             {
-                textBox2.Visible = true;
-                textBox3.Visible = true;
+                txt_range1.Visible = true;
+                txt_range2.Visible = true;
             }
         }
 
@@ -39,27 +39,27 @@ namespace ProjectONE.GUI
         private void button1_Click(object sender, EventArgs e)
         {
             bool problem = false;
-            if (!comboBox1.SelectedItem.ToString().Equals("String"))
-            {
-                int temp1, temp2;
-
-                if (int.TryParse(textBox2.Text, out temp1) && int.TryParse(textBox3.Text, out temp2)) //both the values of the range are inserted?
+                if (!cmb_tipo_attributo.SelectedItem.ToString().Equals("String"))
                 {
-                    if (temp1 <= temp2) //range: n1 <= n2?
-                    {
-                        this.CreateTreeForm.passParams(this.type, textBox1.Text, comboBox1.SelectedItem.ToString(), ((int)temp1).ToString(), ((int)temp2).ToString());
+                    int temp1, temp2;
+
+                    if (int.TryParse(txt_range1.Text, out temp1) && int.TryParse(txt_range2.Text, out temp2)) //both the values of the range are inserted?
+                    { 
+                        if (temp1 <= temp2) //range: n1 <= n2?
+                                               
+                            this.CreateTreeForm.passParams(this.type, txt_nome_attributo.Text, cmb_tipo_attributo.SelectedItem.ToString(), ((int)temp1).ToString(), ((int)temp2).ToString()); 
+                        else
+                            problem = true;
                     }
-                    else
-                        problem = true;
                 }
-                else
-                    problem = true;
-                if(problem)
-                    MessageBox.Show("Please insert appropriate attributes");
-                return;
-            }
+            else { 
+                problem = true;
+                    if(problem)
+                        MessageBox.Show("Please insert appropriate attributes");
+                    return;
+                }
             //attribute is of type string
-            this.CreateTreeForm.passParams(this.type, textBox1.Text, comboBox1.SelectedItem.ToString(), "", "");
+            this.CreateTreeForm.passParams(this.type, txt_nome_attributo.Text, cmb_tipo_attributo.SelectedItem.ToString(), "", "");
         }
     }
 }
