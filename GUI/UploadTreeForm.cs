@@ -19,16 +19,18 @@ namespace ProjectONE.GUI
         }
 
         //Button to choose the directory of the tree to be upload to DB
-        private void button1_Click(object sender, EventArgs e)
+        private void uploadButtonClick(object sender, EventArgs e)
         {
-            OpenFileDialog fbd = new OpenFileDialog();
-            fbd.Multiselect = false;
+            //TODO samuele
+        }
+
+        private void chooseDirectoryClick(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
-            if (result == DialogResult.OK)
-            {
-                this.textBox1.Text = fbd.FileName;
-            }
+            this.textBox1.Text = fbd.SelectedPath;
         }
+
     }
 }

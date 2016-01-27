@@ -23,7 +23,7 @@ namespace ProjectONE.GUI
             }
             catch(System.IO.FileNotFoundException e)
             {
-                Console.WriteLine("Icona non esistente");
+                Console.WriteLine("Icona non esistente " + e);
             }
         }
 

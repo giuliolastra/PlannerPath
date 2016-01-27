@@ -168,7 +168,7 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "+";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.PlusVertexAttributeClicked);
             // 
             // button4
             // 
@@ -178,7 +178,7 @@
             this.button4.TabIndex = 15;
             this.button4.Text = "+";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.PlusEdgeAttributeClicked);
             // 
             // button5
             // 
@@ -188,7 +188,7 @@
             this.button5.TabIndex = 16;
             this.button5.Text = "-";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.MinusVertexAttributeClicked);
             // 
             // button6
             // 
@@ -198,7 +198,7 @@
             this.button6.TabIndex = 17;
             this.button6.Text = "-";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.MinusEdgeAttributeClicked);
             // 
             // button1
             // 
@@ -208,7 +208,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Choose";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.chooseDirectory);
             // 
             // CreateTreeForm
             // 

@@ -27,7 +27,7 @@ namespace ProjectONE.GUI
 
 
         //button + pressed (vertex ProjectONE.Utility.Attributes)
-        private void button3_Click(object sender, EventArgs e)
+        private void PlusVertexAttributeClicked(object sender, EventArgs e)
         {
             InputForm i = new InputForm("vertex", this);
             i.Visible = true;
@@ -112,13 +112,14 @@ namespace ProjectONE.GUI
         }
 
         //button - pressed (vertex attributes)
-        private void button5_Click(object sender, EventArgs e)
+        private void MinusVertexAttributeClicked(object sender, EventArgs e)
         {
-            this.listbox_vertexattr.Items.RemoveAt(this.listbox_vertexattr.SelectedIndex);
+            if(this.listbox_vertexattr.SelectedIndex != -1)
+                this.listbox_vertexattr.Items.RemoveAt(this.listbox_vertexattr.SelectedIndex);
         }
 
         //button + pressed (edge attributes)
-        private void button4_Click(object sender, EventArgs e)
+        private void PlusEdgeAttributeClicked(object sender, EventArgs e)
         {
             InputForm i = new InputForm("edge", this);
             i.Visible = true;
@@ -126,9 +127,10 @@ namespace ProjectONE.GUI
         }
 
         //button - pressed (edge attributes)
-        private void button6_Click(object sender, EventArgs e)
+        private void MinusEdgeAttributeClicked(object sender, EventArgs e)
         {
-            this.listbox_edgeattr.Items.RemoveAt(this.listbox_edgeattr.SelectedIndex);
+            if(this.listbox_edgeattr.SelectedIndex != -1)
+                this.listbox_edgeattr.Items.RemoveAt(this.listbox_edgeattr.SelectedIndex);
         }
 
         //button for Create Tree
@@ -151,12 +153,12 @@ namespace ProjectONE.GUI
         }
 
         //Choose button. Shows a FolderBrowserDialog
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void chooseDirectory(object sender, EventArgs e) {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
             this.textBox2.Text = fbd.SelectedPath;
         }
+        
     }
 }
