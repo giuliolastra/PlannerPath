@@ -8,6 +8,7 @@ namespace ProjectONE
 {
     using System;
     using System.Xml;
+    using Utility;
     public class Engine
     {
         
@@ -27,6 +28,10 @@ namespace ProjectONE
             return uploader.SaveToDB(treeFile);
         }
 
+        public bool performCalculus(string type, string vertexA, string vertexB)
+        {
+            return true;
+        }
 
     }
 }

@@ -20,7 +20,10 @@ namespace ProjectONE.GUI
 
         private void performCalculusButtonClick(object sender, EventArgs e)
         {
-            //todo prova
+            if (txt_tree_type.Text.Equals("") || txt_vertice_a.Text.Equals("") || txt_vertice_b.Text.Equals(""))
+                MessageBox.Show("You mast enter correct fields");
+            else
+                new CalculusManagerControl(txt_tree_type.Text, txt_vertice_a.Text, txt_vertice_b.Text);
         }
     }
 }

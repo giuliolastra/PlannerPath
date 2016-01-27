@@ -8,5 +8,12 @@ namespace ProjectONE.GUI
 {
     class CalculusManagerControl
     {
+        public CalculusManagerControl (string type, string vertexA, string vertexB)
+        {
+            Engine engine = new Engine();
+            engine.performCalculus(type, vertexA, vertexB);
+        }
     }
+
+
 }
