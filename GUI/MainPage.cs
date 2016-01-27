@@ -16,8 +16,15 @@ namespace ProjectONE.GUI
         {
             InitializeComponent();
             this.Location = new Point((Screen.FromControl(this).Bounds.Width - this.Width) / 2, (Screen.FromControl(this).Bounds.Height - this.Height) / 2);
-            Icon notifyIcon1 = new System.Drawing.Icon(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)
-               + @"\icon.ico");
+
+            try {
+                Icon notifyIcon1 = new System.Drawing.Icon(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)
+                   + @"\icon.ico");
+            }
+            catch(System.IO.FileNotFoundException e)
+            {
+                Console.WriteLine("Icona non esistente");
+            }
         }
 
         //Button to open CreateTreeForm
