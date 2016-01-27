@@ -137,14 +137,14 @@ namespace ProjectONE.GUI
         private void generateTree(object sender, EventArgs e)
         {
             int splitsize, depth;
-            if (int.TryParse(textBox4.Text, out splitsize) && int.TryParse(textBox3.Text, out depth))
+            if (int.TryParse(txt_split_size.Text, out splitsize) && int.TryParse(txt_depth.Text, out depth))
             {   
                 //if (textBox1.Text.Length != 0 && textBox2.Text.Length != 0 && listbox_edgeattr.Items.Count != 0 && listbox_vertexattr.Items.Count != 0)
-                if (textBox1.Text.Length != 0 && textBox2.Text.Length != 0)
+                if (txt_tree_name.Text.Length != 0 && txt_destination_folder.Text.Length != 0)
                 {
                     if (splitsize >= 1 && depth >= 1)
                     {
-                        new CreateTreeControl(depth, splitsize, this.verattr, this.edgeattr, this.textBox2.Text, textBox1.Text);
+                        new CreateTreeControl(depth, splitsize, this.verattr, this.edgeattr, this.txt_destination_folder.Text, txt_tree_name.Text);
                         return;
                     }
                 }
@@ -157,7 +157,7 @@ namespace ProjectONE.GUI
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
-            this.textBox2.Text = fbd.SelectedPath;
+            this.txt_destination_folder.Text = fbd.SelectedPath;
         }
         
     }

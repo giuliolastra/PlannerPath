@@ -21,7 +21,12 @@ namespace ProjectONE.GUI
         //Button to choose the directory of the tree to be upload to DB
         private void uploadButtonClick(object sender, EventArgs e)
         {
-            //TODO samuele
+            Engine engine = new Engine();
+            if (txt_tree_directory.Text.Equals(""))
+                MessageBox.Show("You mast enter correct fields");
+            else
+                engine.uploadTree(txt_tree_directory.Text);
+
         }
 
         private void chooseDirectoryClick(object sender, EventArgs e)
@@ -29,7 +34,7 @@ namespace ProjectONE.GUI
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
-            this.textBox1.Text = fbd.SelectedPath;
+            this.txt_tree_directory.Text = fbd.SelectedPath;
         }
 
     }
