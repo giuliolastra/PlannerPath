@@ -18,9 +18,9 @@ namespace ProjectONE.GUI
             this.Location = new Point((Screen.FromControl(this).Bounds.Width - this.Width) / 2, (Screen.FromControl(this).Bounds.Height - this.Height) / 2);
         }
 
-        /*public PerformCalculus(type, vertexA, vertexB)
+        private void performCalculusButtonClick(object sender, EventArgs e)
         {
 
-        }*/
+        }
     }
 }

@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstb_result = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btn_perform_calculus = new System.Windows.Forms.Button();
             this.txt_vertice_b = new System.Windows.Forms.TextBox();
             this.lbl_certice_b = new System.Windows.Forms.Label();
@@ -39,35 +37,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lstb_result
-            // 
-            this.lstb_result.FormattingEnabled = true;
-            this.lstb_result.Location = new System.Drawing.Point(217, 90);
-            this.lstb_result.Name = "lstb_result";
-            this.lstb_result.Size = new System.Drawing.Size(180, 95);
-            this.lstb_result.TabIndex = 25;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(214, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Your Results";
-            // 
             // btn_perform_calculus
             // 
-            this.btn_perform_calculus.Location = new System.Drawing.Point(48, 172);
+            this.btn_perform_calculus.Location = new System.Drawing.Point(51, 120);
             this.btn_perform_calculus.Name = "btn_perform_calculus";
             this.btn_perform_calculus.Size = new System.Drawing.Size(104, 23);
             this.btn_perform_calculus.TabIndex = 3;
             this.btn_perform_calculus.Text = "Perform Calculus";
             this.btn_perform_calculus.UseVisualStyleBackColor = true;
+            this.btn_perform_calculus.Click += new System.EventHandler(this.performCalculusButtonClick);
             // 
             // txt_vertice_b
             // 
-            this.txt_vertice_b.Location = new System.Drawing.Point(112, 131);
+            this.txt_vertice_b.Location = new System.Drawing.Point(115, 79);
             this.txt_vertice_b.Name = "txt_vertice_b";
             this.txt_vertice_b.Size = new System.Drawing.Size(80, 20);
             this.txt_vertice_b.TabIndex = 2;
@@ -75,7 +57,7 @@
             // lbl_certice_b
             // 
             this.lbl_certice_b.AutoSize = true;
-            this.lbl_certice_b.Location = new System.Drawing.Point(142, 115);
+            this.lbl_certice_b.Location = new System.Drawing.Point(145, 63);
             this.lbl_certice_b.Name = "lbl_certice_b";
             this.lbl_certice_b.Size = new System.Drawing.Size(50, 13);
             this.lbl_certice_b.TabIndex = 19;
@@ -83,14 +65,14 @@
             // 
             // txt_vertice_a
             // 
-            this.txt_vertice_a.Location = new System.Drawing.Point(12, 131);
+            this.txt_vertice_a.Location = new System.Drawing.Point(15, 79);
             this.txt_vertice_a.Name = "txt_vertice_a";
             this.txt_vertice_a.Size = new System.Drawing.Size(80, 20);
             this.txt_vertice_a.TabIndex = 1;
             // 
             // txt_tree_type
             // 
-            this.txt_tree_type.Location = new System.Drawing.Point(12, 77);
+            this.txt_tree_type.Location = new System.Drawing.Point(15, 25);
             this.txt_tree_type.Name = "txt_tree_type";
             this.txt_tree_type.Size = new System.Drawing.Size(180, 20);
             this.txt_tree_type.TabIndex = 0;
@@ -98,7 +80,7 @@
             // lbl_vertice_a
             // 
             this.lbl_vertice_a.AutoSize = true;
-            this.lbl_vertice_a.Location = new System.Drawing.Point(9, 115);
+            this.lbl_vertice_a.Location = new System.Drawing.Point(12, 63);
             this.lbl_vertice_a.Name = "lbl_vertice_a";
             this.lbl_vertice_a.Size = new System.Drawing.Size(50, 13);
             this.lbl_vertice_a.TabIndex = 16;
@@ -107,7 +89,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 61);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 15;
@@ -117,9 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 261);
-            this.Controls.Add(this.lstb_result);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(215, 159);
             this.Controls.Add(this.btn_perform_calculus);
             this.Controls.Add(this.txt_vertice_b);
             this.Controls.Add(this.lbl_certice_b);
@@ -135,8 +115,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ListBox lstb_result;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_perform_calculus;
         private System.Windows.Forms.TextBox txt_vertice_b;
         private System.Windows.Forms.Label lbl_certice_b;
