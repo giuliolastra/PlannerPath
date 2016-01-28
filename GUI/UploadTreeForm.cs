@@ -31,10 +31,14 @@ namespace ProjectONE.GUI
 
         private void chooseDirectoryClick(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            OpenFileDialog fbd = new OpenFileDialog();
+            fbd.Filter = "XML files|*.xml";
+            fbd.FilterIndex = 0;
+            fbd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             DialogResult result = fbd.ShowDialog();
 
-            this.txt_tree_directory.Text = fbd.SelectedPath;
+            if(result == DialogResult.OK)
+                this.txt_tree_directory.Text = fbd.FileName;
         }
 
     }

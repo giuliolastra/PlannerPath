@@ -51,7 +51,7 @@ namespace ProjectONE.GUI
         /// <param name="a"></param>
         private void AppendEdgeAttribute(ProjectONE.Utility.Attribute a)
         {
-            Console.WriteLine(a.ToString());
+            //Console.WriteLine(a.ToString());
             if (this.edgeattr == null)
                 this.edgeattr = new LinkedList<ProjectONE.Utility.Attribute>();
             this.edgeattr.AddLast(a);
@@ -157,7 +157,8 @@ namespace ProjectONE.GUI
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
-            this.txt_destination_folder.Text = fbd.SelectedPath;
+            if(result == DialogResult.OK)
+                this.txt_destination_folder.Text = fbd.SelectedPath;
         }
         
     }
