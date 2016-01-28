@@ -89,17 +89,13 @@ namespace ProjectONE.Utility
             }
 
         }
-
+        
 
         public bool ToFile(String path) {
 
             String fileName = this.type;
-
+            
             //Write general information
-            if (!System.IO.Directory.Exists(path))
-                return false;
-
-
             if (fileName.EndsWith(".xml") == false)
                 fileName += ".xml";
 
@@ -115,6 +111,13 @@ namespace ProjectONE.Utility
                 completepath = path + fileName;
                 this.XMLPath = completepath;
                 Console.WriteLine("Sono in tree ed il path e':"+this.XMLPath);
+            }
+            
+            //control if file already exists
+            if (System.IO.File.Exists(completepath))
+            {
+                System.Windows.Forms.MessageBox.Show("File with that name already exists in that directory");
+                return false;
             }
 
             this.XMLPath = completepath;
@@ -258,11 +261,6 @@ namespace ProjectONE.Utility
             }
 
             return this.fileWriter;
-        }
-
-
-        public bool isEmpty() {
-            return root == null;
         }
         
 
