@@ -29,6 +29,7 @@ namespace ProjectONE.GUI
 
         }
 
+        //Button to choose the directory of the tree
         private void chooseDirectoryClick(object sender, EventArgs e)
         {
             OpenFileDialog fbd = new OpenFileDialog();

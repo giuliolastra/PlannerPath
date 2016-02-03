@@ -72,7 +72,8 @@
             this.cmb_tipo_attributo.Name = "cmb_tipo_attributo";
             this.cmb_tipo_attributo.Size = new System.Drawing.Size(121, 21);
             this.cmb_tipo_attributo.TabIndex = 3;
-            this.cmb_tipo_attributo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmb_tipo_attributo.SelectionChangeCommitted += new System.EventHandler(this.cmb_tipo_attributo_SelectionChangeCommitted);
+            this.cmb_tipo_attributo.TextUpdate += new System.EventHandler(this.cmb_tipo_attributo_TextUpdate);
             // 
             // btn_insert
             // 
@@ -99,7 +100,6 @@
             this.txt_range1.Name = "txt_range1";
             this.txt_range1.Size = new System.Drawing.Size(54, 20);
             this.txt_range1.TabIndex = 6;
-            this.txt_range1.Visible = false;
             // 
             // txt_range2
             // 
@@ -107,7 +107,6 @@
             this.txt_range2.Name = "txt_range2";
             this.txt_range2.Size = new System.Drawing.Size(54, 20);
             this.txt_range2.TabIndex = 7;
-            this.txt_range2.Visible = false;
             // 
             // label4
             // 

@@ -23,6 +23,7 @@ namespace ProjectONE.GUI
             MessageBox.Show(info);
         }
 
+        /*control consinstency of data CalculusManagerFrom*/
         private void performCalculusButtonClick(object sender, EventArgs e)
         {
             if (txt_tree_type.Text.Equals("") || txt_vertice_a.Text.Equals("") || txt_vertice_b.Text.Equals(""))

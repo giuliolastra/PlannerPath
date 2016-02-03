@@ -25,17 +25,7 @@ namespace ProjectONE.GUI
             this.CreateTreeForm = f1ref;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox cb = (ComboBox)sender;
-            if (cb.SelectedText != "String")
-            {
-                txt_range1.Visible = true;
-                txt_range2.Visible = true;
-            }
-        }
-
-        //insert attribute
+        //insert attribute and control consinstency of data
         private void button1_Click(object sender, EventArgs e)
         {
             bool problem = false;
@@ -60,6 +50,36 @@ namespace ProjectONE.GUI
                 }
             //attribute is of type string
             this.CreateTreeForm.passParams(this.type, txt_nome_attributo.Text, cmb_tipo_attributo.SelectedItem.ToString(), "", "");
+        }
+
+        //control values in combobox
+        private void cmb_tipo_attributo_TextUpdate(object sender, EventArgs e)
+        {
+            if (cmb_tipo_attributo.Text!= "String" && cmb_tipo_attributo.Text != "Integer")
+            {
+                txt_range1.Enabled = false;
+                txt_range2.Enabled = false;
+            }
+            else
+            {
+                txt_range1.Enabled = true;
+                txt_range2.Enabled = true;
+            }
+        }
+
+        //coltrol values in combobox
+        private void cmb_tipo_attributo_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmb_tipo_attributo.SelectedText != "String" || cmb_tipo_attributo.SelectedText != "Integer")
+            {
+                txt_range1.Enabled = true;
+                txt_range2.Enabled = true;
+            }
+            else
+            {
+                txt_range1.Enabled = false;
+                txt_range2.Enabled = false;
+            }
         }
     }
 }

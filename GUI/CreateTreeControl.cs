@@ -10,6 +10,7 @@ namespace ProjectONE.GUI
         Tree TempTree;
         String Path;
 
+        /* create tree */
         public CreateTreeControl(int depth, int splitsize, LinkedList<ProjectONE.Utility.Attribute> vertexesAttributes, LinkedList<ProjectONE.Utility.Attribute> edgesAttributes, String path, String treetype)
         {
             this.Path = path;
@@ -29,7 +30,8 @@ namespace ProjectONE.GUI
                 MessageBox.Show("Your tree is on the Database");
 
         }
-
+        
+        /* for path of file */
         public bool generateTreeFile()
         {
 

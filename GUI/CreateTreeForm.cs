@@ -133,7 +133,7 @@ namespace ProjectONE.GUI
                 this.listbox_edgeattr.Items.RemoveAt(this.listbox_edgeattr.SelectedIndex);
         }
 
-        //button for Create Tree
+        //button for Create Tree and control consinstency of data
         private void generateTree(object sender, EventArgs e)
         {
             int splitsize, depth;
