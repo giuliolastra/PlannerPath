@@ -67,6 +67,12 @@
     <Compile Include="Attr.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GUI\CalculusManagerControl.cs" />
+    <Compile Include="GUI\ConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ConfigurationForm.Designer.cs">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\CreateTreeControl.cs" />
     <Compile Include="Uploader.cs" />
     <Compile Include="Utility\Attribute.cs" />
@@ -114,6 +120,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\CalculusManagerForm.resx">
       <DependentUpon>CalculusManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ConfigurationForm.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CreateTreeForm.resx">
       <DependentUpon>CreateTreeForm.cs</DependentUpon>

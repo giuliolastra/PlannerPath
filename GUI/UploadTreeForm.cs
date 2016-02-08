@@ -25,7 +25,10 @@ namespace ProjectONE.GUI
             if (txt_tree_directory.Text.Equals(""))
                 MessageBox.Show("You mast enter correct fields");
             else
-                engine.uploadTree(txt_tree_directory.Text);
+                if(engine.uploadTree(txt_tree_directory.Text))
+                    MessageBox.Show("Tree upload successfully");
+                else
+                    MessageBox.Show("Tree not upload");
 
         }
 

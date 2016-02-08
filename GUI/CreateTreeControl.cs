@@ -20,10 +20,12 @@ namespace ProjectONE.GUI
 
             Engine engine = new Engine();
 
-            if(generateTreeFile() == false)
-                MessageBox.Show("Problems while storing file into file");
+            //Generate tree file and...
+            if(this.generateTreeFile() == false)
+                MessageBox.Show("Problems while storing file into file. Wait for upload to DB...");
             else
-                MessageBox.Show("Your tree is in the file");
+                MessageBox.Show("Your tree is in the file. Wait for upload to DB...");
+            //and then upload it to DB
             if(!engine.uploadTree(this.TempTree.getXMLPath()))
                 MessageBox.Show("Problems while uploading tree to database");
             else
@@ -31,7 +33,7 @@ namespace ProjectONE.GUI
 
         }
         
-        /* for path of file */
+        /* this function calls the method that effectively builds the XML file */
         public bool generateTreeFile()
         {
 
