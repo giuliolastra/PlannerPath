@@ -21,14 +21,16 @@ namespace ProjectONE.GUI
         //Button to choose the directory of the tree to be upload to DB
         private void uploadButtonClick(object sender, EventArgs e)
         {
+            String MessageBoxTitle = "Upload Tree";
+
             Engine engine = new Engine();
             if (txt_tree_directory.Text.Equals("") || !txt_tree_directory.Text.EndsWith(".xml") || !System.IO.File.Exists(txt_tree_directory.Text))
-                MessageBox.Show("You mast enter correct fields");
+                MessageBox.Show("You must enter correct fields", MessageBoxTitle);
             else
                 if(engine.uploadTree(txt_tree_directory.Text))
-                    MessageBox.Show("Tree upload successfully");
+                    MessageBox.Show("Tree uploaded successfully", MessageBoxTitle);
                 else
-                    MessageBox.Show("Tree not upload");
+                    MessageBox.Show("Tree not uploaded", MessageBoxTitle);
 
         }
 

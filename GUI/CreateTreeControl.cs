@@ -13,6 +13,8 @@ namespace ProjectONE.GUI
         /* create tree */
         public CreateTreeControl(int depth, int splitsize, LinkedList<ProjectONE.Utility.Attribute> vertexesAttributes, LinkedList<ProjectONE.Utility.Attribute> edgesAttributes, String path, String treetype)
         {
+            String messageBoxTitle = "Create Tree";
+
             this.Path = path;
 
             this.TempTree = new Tree(depth, splitsize, vertexesAttributes, edgesAttributes, true);
@@ -22,14 +24,14 @@ namespace ProjectONE.GUI
 
             //Generate tree file and...
             if(this.generateTreeFile() == false)
-                MessageBox.Show("Problems while storing file into file. Wait for upload to DB...");
+                MessageBox.Show("Problems while storing file into file. Wait for upload to DB...",messageBoxTitle);
             else
-                MessageBox.Show("Your tree is in the file. Wait for upload to DB...");
+                MessageBox.Show("Your tree is in the file. Wait for upload to DB...",messageBoxTitle);
             //and then upload it to DB
             if(!engine.uploadTree(this.TempTree.getXMLPath()))
-                MessageBox.Show("Problems while uploading tree to database");
+                MessageBox.Show("Problems while uploading tree to database",messageBoxTitle);
             else
-                MessageBox.Show("Your tree is on the Database");
+                MessageBox.Show("Your tree is on the Database",messageBoxTitle);
 
         }
         
