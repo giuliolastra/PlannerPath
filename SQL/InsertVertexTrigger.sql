@@ -1,4 +1,0 @@
-﻿CREATE TRIGGER T1  
-ON Vertex  
-AFTER INSERT   
-AS SELECT VertexUid FROM Vertex

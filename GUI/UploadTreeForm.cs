@@ -22,19 +22,27 @@ namespace ProjectONE.GUI
         private void uploadButtonClick(object sender, EventArgs e)
         {
             Engine engine = new Engine();
-            if (txt_tree_directory.Text.Equals(""))
+            if (txt_tree_directory.Text.Equals("") || !txt_tree_directory.Text.EndsWith(".xml") || !System.IO.File.Exists(txt_tree_directory.Text))
                 MessageBox.Show("You mast enter correct fields");
             else
-                engine.uploadTree(txt_tree_directory.Text);
+                if(engine.uploadTree(txt_tree_directory.Text))
+                    MessageBox.Show("Tree upload successfully");
+                else
+                    MessageBox.Show("Tree not upload");
 
         }
 
+        //Button to choose the directory of the tree
         private void chooseDirectoryClick(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            OpenFileDialog fbd = new OpenFileDialog();
+            fbd.Filter = "XML files|*.xml";
+            fbd.FilterIndex = 0;
+            fbd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             DialogResult result = fbd.ShowDialog();
 
-            this.txt_tree_directory.Text = fbd.SelectedPath;
+            if(result == DialogResult.OK)
+                this.txt_tree_directory.Text = fbd.FileName;
         }
 
     }

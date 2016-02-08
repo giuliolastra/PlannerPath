@@ -18,6 +18,12 @@ namespace ProjectONE.GUI
             this.Location = new Point((Screen.FromControl(this).Bounds.Width - this.Width) / 2, (Screen.FromControl(this).Bounds.Height - this.Height) / 2);
         }
 
+        internal static void returnSum(string info)
+        {
+            MessageBox.Show(info);
+        }
+
+        /*control consinstency of data CalculusManagerFrom*/
         private void performCalculusButtonClick(object sender, EventArgs e)
         {
             if (txt_tree_type.Text.Equals("") || txt_vertice_a.Text.Equals("") || txt_vertice_b.Text.Equals(""))

@@ -1,4 +1,0 @@
-﻿CREATE TRIGGER T2  
-ON Edge  
-AFTER INSERT   
-AS SELECT EdgeUid FROM Edge; 

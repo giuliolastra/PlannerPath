@@ -49,3 +49,4 @@ Temporary Items
 # Compiling folder
 bin
 obj
+.vs

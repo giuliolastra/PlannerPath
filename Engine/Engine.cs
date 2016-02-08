@@ -14,24 +14,25 @@ namespace ProjectONE
         
         public Engine()
         {
-
         /*
             @Todo:  Rendere Engine richiamabile da un ambiente esterno.
     
         */
-
         }
 
         public bool uploadTree(String treeFile)
         {   
             Uploader uploader = new Uploader();
-            return uploader.SaveToDB(treeFile);
-        }
-
-        public bool performCalculus(string type, string vertexA, string vertexB)
-        {
+            uploader.SaveToDB(treeFile);
             return true;
         }
+
+        public String performCalculus(string type, string vertexA, string vertexB)
+        {
+            Calculus calculus = new Calculus();
+            return calculus.PathCalculus(type, vertexA, vertexB);
+        }
+
 
     }
 }

@@ -46,6 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
@@ -64,11 +65,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attr.cs" />
-    <Compile Include="Engine.cs" />
+    <Compile Include="Engine\Attr.cs" />
+    <Compile Include="Engine\Engine.cs" />
     <Compile Include="GUI\CalculusManagerControl.cs" />
     <Compile Include="GUI\CreateTreeControl.cs" />
-    <Compile Include="Uploader.cs" />
+    <Compile Include="Engine\Uploader.cs" />
+    <Compile Include="Engine\Calculus.cs" />
+    <Compile Include="Engine\ResultCollector.cs" />
+    <Compile Include="ResetSql.cs" />
     <Compile Include="Utility\Attribute.cs" />
     <Compile Include="GUI\CalculusManagerForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +153,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Utility\bozzaCodice.php" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -169,6 +174,7 @@
     <Content Include="icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Utility\query varie.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
