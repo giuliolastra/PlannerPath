@@ -25,7 +25,7 @@ namespace ProjectONE.Utility
         String XMLPath;
 
         public String getXMLPath() {
-            Console.WriteLine(this.XMLPath);
+            //Console.WriteLine(this.XMLPath);
             return this.XMLPath;
         }
 
@@ -76,21 +76,28 @@ namespace ProjectONE.Utility
 
         }
 
-
+        /// <summary>
+        /// Generates a random Tree with your parameters.
+        /// Before to call this function you must set VertexAttributes and EdgeAttributes
+        /// </summary>
         public void randomGenerateTree() {
 
             for (int j = 0; j < this.SplitSize && this.Depth > 0; j++) {
                     
                 Vertex childVertex = new Vertex(GetRandomAttributes(true, VertexAttributes, EdgeAttributes).ToArray(), new LinkedList<Edge>(), root.Depth+1);
                 this.root.append(new Edge(this.root, childVertex, GetRandomAttributes(false, VertexAttributes, EdgeAttributes)));
-                    Tree subTree = new Tree(this.Depth-1,this.SplitSize,this.VertexAttributes,this.EdgeAttributes,childVertex);
-                    subTree.randomGenerateTree();
-                    //Console.WriteLine(j+". Depth: "+this.Depth+" - SplitSize: "+this.SplitSize);
+                Tree subTree = new Tree(this.Depth-1,this.SplitSize,this.VertexAttributes,this.EdgeAttributes,childVertex);
+                subTree.randomGenerateTree();
+                //Console.WriteLine(j+". Depth: "+this.Depth+" - SplitSize: "+this.SplitSize);
             }
 
         }
         
-
+        /// <summary>
+        /// Writes this tree to XML file
+        /// </summary>
+        /// <param name="path">Path where to store this tree. Must end with .XML</param>
+        /// <returns>True on success</returns>
         public bool ToFile(String path) {
 
             String fileName = this.type;
