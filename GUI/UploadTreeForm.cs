@@ -22,7 +22,7 @@ namespace ProjectONE.GUI
         private void uploadButtonClick(object sender, EventArgs e)
         {
             Engine engine = new Engine();
-            if (txt_tree_directory.Text.Equals(""))
+            if (txt_tree_directory.Text.Equals("") || !txt_tree_directory.Text.EndsWith(".xml") || !System.IO.File.Exists(txt_tree_directory.Text))
                 MessageBox.Show("You mast enter correct fields");
             else
                 if(engine.uploadTree(txt_tree_directory.Text))
