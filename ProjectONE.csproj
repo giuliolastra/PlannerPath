@@ -65,15 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\SqlConnector.cs" />
+    <Compile Include="GUI\ConfigurationForm.Designer.cs" />
     <Compile Include="Engine\Attr.cs" />
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="GUI\CalculusManagerControl.cs" />
-    <Compile Include="GUI\ConfigurationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ConfigurationForm.Designer.cs">
-      <DependentUpon>ConfigurationForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\CreateTreeControl.cs" />
     <Compile Include="Engine\Uploader.cs" />
     <Compile Include="Engine\Calculus.cs" />
@@ -109,6 +105,9 @@
     <Compile Include="GUI\UploadTreeForm.Designer.cs">
       <DependentUpon>UploadTreeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Utility\MyRandom.cs" />
     <Compile Include="Utility\Tree.cs" />
     <Compile Include="Utility\Vertex.cs" />
@@ -121,11 +120,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\ConfigurationForm.resx" />
     <EmbeddedResource Include="GUI\CalculusManagerForm.resx">
       <DependentUpon>CalculusManagerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ConfigurationForm.resx">
-      <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CreateTreeForm.resx">
       <DependentUpon>CreateTreeForm.cs</DependentUpon>

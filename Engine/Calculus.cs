@@ -14,11 +14,12 @@ namespace ProjectONE
         public Calculus()
         {
             //Connessione to DB
-            this.MyConnection = new SqlConnection("user id=Administrator;" +
-                                          "password=password;server=(localdb)\\MSSQLLocalDB;" +
-                                          "Trusted_Connection=yes;" +
-                                          "database=master; " +
-                                          "connection timeout=30");
+            SqlConnector SqlConn = new SqlConnector();
+            this.MyConnection = new SqlConnection("user id=" + SqlConn.Username + ";" +
+                                           "password=" + SqlConn.Password + ";server=" + SqlConn.Server + ";" +
+                                           "Trusted_Connection=yes;" +
+                                           "database=" + SqlConn.Database + "; " +
+                                           "connection timeout=30");
             try
             {
                 this.MyConnection.Open();

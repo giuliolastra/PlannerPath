@@ -12,9 +12,14 @@ namespace ProjectONE.GUI
 {
     public partial class MainPage : Form
     {
+        
         public MainPage()
         {
             InitializeComponent();
+            if (ConfigurationForm.ConfigFileExists() == false)
+            {
+                new ConfigurationForm().ShowDialog();
+            }
 
             this.Location = new Point((Screen.FromControl(this).Bounds.Width - this.Width) / 2, (Screen.FromControl(this).Bounds.Height - this.Height) / 2);
 

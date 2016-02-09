@@ -13,6 +13,7 @@ namespace ProjectONE.GUI
 {
     public partial class ConfigurationForm : Form
     {
+
         private bool alreadyCalled; // true if save() already called from save() itself
 
         public ConfigurationForm()
@@ -21,57 +22,6 @@ namespace ProjectONE.GUI
             this.Location = new Point((Screen.FromControl(this).Bounds.Width - this.Width) / 2, (Screen.FromControl(this).Bounds.Height - this.Height) / 2);
         }
 
-        /// <summary>
-        /// If configuration file already exists, returns username
-        /// </summary>
-        /// <returns>username if config file exists, null otherwise</returns>
-        public static string GetUsername()
-        {
-            if (ConfigurationForm.ConfigFileExists() == false)
-                return null;
-
-            string[] lines = System.IO.File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt");
-            return lines[0].Replace("USERNAME: ", "");
-        }
-
-        /// <summary>
-        /// If configuration file already exists, returns password
-        /// </summary>
-        /// <returns>password if config file exists, null otherwise</returns>
-        public static string GetPassword()
-        {
-            if (ConfigurationForm.ConfigFileExists() == false)
-                return null;
-
-            string[] lines = System.IO.File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt");
-            return lines[1].Replace("PASSWORD: ", "");
-        }
-
-        /// <summary>
-        /// If configuration file already exists, returns db name
-        /// </summary>
-        /// <returns>db name if config file exists, null otherwise</returns>
-        public static string GetDBName()
-        {
-            if (ConfigurationForm.ConfigFileExists() == false)
-                return null;
-
-            string[] lines = System.IO.File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt");
-            return lines[2].Replace("DBNAME: ", "");
-        }
-
-        /// <summary>
-        /// If configuration file already exists, returns server
-        /// </summary>
-        /// <returns>server if config file exists, null otherwise</returns>
-        public static string GetServer()
-        {
-            if (ConfigurationForm.ConfigFileExists() == false)
-                return null;
-
-            string[] lines = System.IO.File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt");
-            return lines[3].Replace("SERVER: ", "");
-        }
 
         /// <summary>
         /// Returns true if configuration file already exists
@@ -79,7 +29,7 @@ namespace ProjectONE.GUI
         /// <returns></returns>
         public static bool ConfigFileExists()
         {
-            return File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt");
+            return File.Exists(Directory.GetCurrentDirectory() + @"\mssql.conf");
         }
 
         /// <summary>
@@ -89,14 +39,14 @@ namespace ProjectONE.GUI
         /// <returns>true if saving succeded</returns>
         private bool save(bool overwrite)
         {
-            if (!overwrite && File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt"))
+            if (!overwrite && File.Exists(Directory.GetCurrentDirectory() + @"\mssql.conf"))
             {
                 MessageBox.Show("Configuration file already exists");
                 return false;
             }
             else
             {
-                File.Delete((Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt"));
+                File.Delete(Directory.GetCurrentDirectory() + @"\mssql.conf");
             }
 
             string username = this.txt_username.Text;
@@ -106,7 +56,7 @@ namespace ProjectONE.GUI
 
             try {
                 using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\config.txt"))
+                new System.IO.StreamWriter(Directory.GetCurrentDirectory() + @"\mssql.conf"))
                 {
                     file.WriteLine("USERNAME: " + username);
                     file.WriteLine("PASSWORD: " + password);
