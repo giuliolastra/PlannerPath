@@ -18,8 +18,8 @@ namespace ProjectONE.GUI
         public InputForm(String t, CreateTreeForm f1ref)
         {
             InitializeComponent();
-            cmb_tipo_attributo.Items.Add("String");
             cmb_tipo_attributo.Items.Add("Integer");
+            cmb_tipo_attributo.Items.Add("String");
             cmb_tipo_attributo.SelectedIndex = 0;
             type = t;
             this.CreateTreeForm = f1ref;
@@ -52,30 +52,23 @@ namespace ProjectONE.GUI
             this.CreateTreeForm.passParams(this.type, txt_nome_attributo.Text, cmb_tipo_attributo.SelectedItem.ToString(), "", "");
         }
 
-        //control values in combobox
+        //control values in combobox. Id est, you cannot write "Double", "integer", "hello world" and so on. Only "String" or "Integer"
         private void cmb_tipo_attributo_TextUpdate(object sender, EventArgs e)
         {
-            if (cmb_tipo_attributo.Text!= "String" && cmb_tipo_attributo.Text != "Integer")
-            {
-                txt_range1.Enabled = false;
-                txt_range2.Enabled = false;
-            }
-            else
-            {
-                txt_range1.Enabled = true;
-                txt_range2.Enabled = true;
-            }
+            txt_range1.Enabled = true;
+            txt_range2.Enabled = true;
+            cmb_tipo_attributo.SelectedIndex = 0;
         }
 
-        //coltrol values in combobox
+        //control values in combobox
         private void cmb_tipo_attributo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cmb_tipo_attributo.SelectedText != "String" || cmb_tipo_attributo.SelectedText != "Integer")
+            if (!cmb_tipo_attributo.SelectedText.Equals("Integer")) //if current attribute is of type string
             {
                 txt_range1.Enabled = true;
                 txt_range2.Enabled = true;
             }
-            else
+            else //...or of type integer
             {
                 txt_range1.Enabled = false;
                 txt_range2.Enabled = false;
