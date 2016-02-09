@@ -24,9 +24,9 @@ namespace ProjectONE.GUI
 
             //Generate tree file and...
             if(this.generateTreeFile() == false)
-                MessageBox.Show("Problems while storing file into file. Wait for upload to DB...",messageBoxTitle);
+                MessageBox.Show("Problems while storing file into file. Please click 0K and wait for upload to DB",messageBoxTitle);
             else
-                MessageBox.Show("Your tree is in the file. Wait for upload to DB...",messageBoxTitle);
+                MessageBox.Show("Your tree is in the file. Please click 0K and wait for upload to DB",messageBoxTitle);
             //and then upload it to DB
             if(!engine.uploadTree(this.TempTree.getXMLPath()))
                 MessageBox.Show("Problems while uploading tree to database",messageBoxTitle);
