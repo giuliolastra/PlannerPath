@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UploadTreeForm));
             this.btn_choose_ut = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_tree_directory = new System.Windows.Forms.TextBox();
@@ -79,6 +80,7 @@
             this.Controls.Add(this.txt_tree_directory);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_choose_ut);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UploadTreeForm";
             this.Text = "Upload Tree";
             this.ResumeLayout(false);

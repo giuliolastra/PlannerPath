@@ -20,6 +20,14 @@ namespace ProjectONE.GUI
         {
             InitializeComponent();
             this.Location = new Point((Screen.FromControl(this).Bounds.Width - this.Width) / 2, (Screen.FromControl(this).Bounds.Height - this.Height) / 2);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigurationForm));
+            this.SuspendLayout();
+            // 
+            // ConfigurationForm
+            // 
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Configuration Form";
+            this.ResumeLayout(false);
         }
 
 

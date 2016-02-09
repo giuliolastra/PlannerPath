@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculusManagerForm));
             this.btn_perform_calculus = new System.Windows.Forms.Button();
             this.txt_vertice_b = new System.Windows.Forms.TextBox();
             this.lbl_certice_b = new System.Windows.Forms.Label();
@@ -107,6 +108,7 @@
             this.Controls.Add(this.txt_tree_type);
             this.Controls.Add(this.lbl_vertice_a);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CalculusManagerForm";
             this.Text = "Calculus Form";
             this.ResumeLayout(false);
