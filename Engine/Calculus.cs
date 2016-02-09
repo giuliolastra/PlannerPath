@@ -108,14 +108,13 @@ namespace ProjectONE
             }
             
             Console.WriteLine("*** VertexUID: " + VertexUID);
-            // Conto gli attributi per inizializzare ResultCollector
-            
-            //int AttributeNumber = getAttributeSize(VertexUID);
+
             String EdgeUID = getEdgeUIDFromVertex(VertexUID);
-            //AttributeNumber = AttributeNumber + getAttributeSize(EdgeUID);
+            // Conto gli attributi per inizializzare ResultCollector
+            int AttributeNumber = getAttributeSize(VertexUID) + getAttributeSize(EdgeUID);
             
             //ResultCollector result = new ResultCollector(AttributeNumber);
-            ResultCollector result = new ResultCollector(1);
+            ResultCollector result = new ResultCollector(AttributeNumber+1);
 
             //Adding first vertex to VertexNameList
             result.addVertexName(VertexName);
@@ -129,11 +128,11 @@ namespace ProjectONE
 
                 String AttrName = "";
                 int AttrValue = 0;
-                /*
+                
                 try
                 {
                     SqlDataReader myReader = null;
-                    SqlCommand myCommand = new SqlCommand("SELECT AD.AttDefUid, AD.Name, AU.AttrValue FROM AttrDef AD, AttrUsage AU WHERE AU.ObjectUid = '" + VertexUID + "' AND AU.AttrDefUid = AD.AttrDefUid; ", this.MyConnection);
+                    SqlCommand myCommand = new SqlCommand("SELECT AD.AttrDefUid, AD.Name, AU.AttrValue FROM AttrDef AD, AttrUsage AU WHERE AU.ObjectUid = '" + VertexUID + "' AND AU.AttrDefUid = AD.AttrDefUid; ", this.MyConnection);
                     myReader = myCommand.ExecuteReader();
 
                     while (myReader.Read())
@@ -144,10 +143,16 @@ namespace ProjectONE
 
                         AttrName = myReader["Name"].ToString();
                         //Console.WriteLine(vertexUID);
-                        if (i == 0) result.addNewAttribute(AttrName, AttrValue);
-                        else result.addAttribute(AttrName, AttrValue);
-                    }
+                        if (i == 0)
+                        {
+                            result.addNewAttribute(AttrName, AttrValue);
+                        }
+                        else
+                        {
+                            result.addAttribute(AttrName, AttrValue);
 
+                        }
+                    }
 
                     myReader.Close();
                 }
@@ -155,38 +160,44 @@ namespace ProjectONE
                 {
                     Console.WriteLine(e.ToString());
                 }
-                */
+                
                 EdgeUID = getEdgeUIDFromVertex(VertexUID);
-                /*
-                try
-                {
-                    SqlDataReader myReader = null;
-                    SqlCommand myCommand = new SqlCommand("SELECT AD.AttDefUid, AD.Name, AU.AttrValue FROM AttrDef AD, AttrUsage AU WHERE AU.ObjectUid = '" + EdgeUID + "' AND AU.AttrDefUid = AD.AttrDefUid; ", this.MyConnection);
-                    myReader = myCommand.ExecuteReader();
 
-                    while (myReader.Read())
+                //if (i < depthDiff - 1)
+                //{
+                    try
                     {
-                        int.TryParse(myReader["AttrValue"].ToString(), out AttrValue);
-                        //myReader analizza la query e la ridà sporca, allora si fa il cast con toString().
-                        //Ridà quindi VertexUid come stringa
+                        SqlDataReader myReader = null;
+                        SqlCommand myCommand = new SqlCommand("SELECT AD.AttrDefUid, AD.Name, AU.AttrValue FROM AttrDef AD, AttrUsage AU WHERE AU.ObjectUid = '" + EdgeUID + "' AND AU.AttrDefUid = AD.AttrDefUid; ", this.MyConnection);
+                        myReader = myCommand.ExecuteReader();
 
-                        AttrName = myReader["Name"].ToString();
+                        while (myReader.Read())
+                        {
+                            int.TryParse(myReader["AttrValue"].ToString(), out AttrValue);
+                            //myReader analizza la query e la ridà sporca, allora si fa il cast con toString().
+                            //Ridà quindi VertexUid come stringa
+
+                            AttrName = myReader["Name"].ToString();
                         //Console.WriteLine(vertexUID);
-                        if (i == 0) result.addNewAttribute(AttrName, AttrValue);
+                        if (i == 0)
+                        {
+                            result.addNewAttribute(AttrName, AttrValue);
+                        }
                         else result.addAttribute(AttrName, AttrValue);
+                        }
+
+                        myReader.Close();
                     }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                    }
+                    
 
+                //}
 
-                    myReader.Close();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
-                */
                 VertexUID = getVertexUIDFromEdge(EdgeUID);
                 VertexName = getVertexName(VertexUID);
-                
                 result.addVertexName(VertexName);
             }
 
@@ -239,7 +250,7 @@ namespace ProjectONE
             }
             catch (Exception e)
             {
-                //Console.WriteLine(e.ToString());
+                Console.WriteLine(e.ToString());
             }
             Console.WriteLine("getVertexUIDFromEdge() -> EdgeUID: " + EdgeUID + " - VertexUID: " + VertexUID);
             return VertexUID;
@@ -247,7 +258,6 @@ namespace ProjectONE
         }
         private String getVertexName(String VertexUID)
         {
-            Console.WriteLine("cicciopasticcio");
             String VertexName = "";
             // Vedere l'edge collegato
             try
@@ -266,7 +276,7 @@ namespace ProjectONE
             }
             catch (Exception e)
             {
-                Console.WriteLine("Niente cicciopasticcio " +e.ToString());
+                Console.WriteLine(e.ToString());
             }
             Console.WriteLine("getVertexName() -> "+VertexName);
             return VertexName;
@@ -293,7 +303,7 @@ namespace ProjectONE
             }
             catch (Exception e)
             {
-                //Console.WriteLine(e.ToString());
+                Console.WriteLine(e.ToString());
             }
             return AttributeNumber;
         }

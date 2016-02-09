@@ -53,34 +53,42 @@ public class Uploader
         this.Depth = InfoNode.SelectSingleNode("Depth").InnerText;
 
         // Stampa di Debug
-        Console.WriteLine("Type: " + this.Type);
-        Console.WriteLine("SplitSize: " + this.SplitSize);
-        Console.WriteLine("Depth: " + this.Depth);
+        //Console.WriteLine("Type: " + this.Type);
+        //Console.WriteLine("SplitSize: " + this.SplitSize);
+        //Console.WriteLine("Depth: " + this.Depth);
 
         // Genero l'array con gli Attributi.
         XmlNodeList AttrList = InfoNode.SelectSingleNode("Attributes").SelectNodes("Attribute");
         this.Attributes = new Attr[AttrList.Count];
 
         //Popolo l'array e faccio query per inserimento in AttrDef
-        //for (int j = 0; j < AttrList.Count; j++) {
+        for (int j = 0; j < AttrList.Count; j++) {
 
-            //this.Attributes[j] = new Attr(AttrList.Item(j).SelectSingleNode("Type").InnerText, AttrList.Item(j).SelectSingleNode("Name").InnerText);
-            
-            //Inserimento nel DB
-            /*try
+            this.Attributes[j] = new Attr(AttrList.Item(j).SelectSingleNode("Type").InnerText, AttrList.Item(j).SelectSingleNode("Name").InnerText);
+            String AttrDefUID = "";
+
+            //Inserisco nel DB gli attributi
+            try
             {
                 SqlDataReader myReader = null;
-                SqlCommand myCommand = new SqlCommand("INSERT INTO AttrDef VALUES (newid(), '"+Attributes[j].Name+"');", this.MyConnection);
+                SqlCommand myCommand = new SqlCommand("INSERT INTO AttrDef OUTPUT Inserted.AttrDefUid VALUES (newid(), '" + Attributes[j].Name+"');", this.MyConnection);
                 myReader = myCommand.ExecuteReader();
 
+                while (myReader.Read())
+                {
+                    AttrDefUID = myReader["AttrDefUid"].ToString();
+
+                }
                 myReader.Close();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-            }*/
+            }
 
-        //}
+            this.Attributes[j].AttributeUID = AttrDefUID;
+            
+        }
         
         // Ottengo il Vertice Root.
         XmlNode RootVertex = xmlTree.DocumentElement.SelectSingleNode("Vertex");
@@ -110,9 +118,39 @@ public class Uploader
 		{
 		    Console.WriteLine(e.ToString());
 		}
-        this.SaveToDB(vertexUID,RootVertex,depth+1);
 
-        
+        XmlNode AttributesNode = RootVertex.SelectSingleNode("Attributes");
+
+        //Adding Vertex Attributes to DB
+        for (int i = 0; i < Attributes.Length; i++) {
+
+            XmlNode SingleAttr = AttributesNode.SelectSingleNode(Attributes[i].Name);
+            
+            if(SingleAttr != null)
+            {
+                Console.WriteLine(i + ". " + Attributes[i].Name + "(" + Attributes[i].Type + ") : " + SingleAttr);
+                try
+                {
+                    SqlDataReader myReader = null;
+                    SqlCommand myCommand = new SqlCommand("INSERT INTO AttrUsage VALUES (newid(), '"+ vertexUID + "', '" + Attributes[i].AttributeUID + "', '" + SingleAttr.InnerText + "')", this.MyConnection);
+                    myReader = myCommand.ExecuteReader();
+
+                    myReader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Null found");
+            }
+        }
+
+        this.SaveToDB(vertexUID, RootVertex, depth + 1);
+
     }
     
     private void SaveToDB(String RootUid, XmlNode RootVertex, int depth) {
@@ -144,7 +182,7 @@ public class Uploader
                     {
                         // Returning EdgeUid with trigger
                         EdgeUID = myReader["EdgeUid"].ToString();
-                        Console.WriteLine(EdgeNode.SelectSingleNode("Name").InnerText+" -- " + EdgeUID);
+                        //Console.WriteLine(EdgeNode.SelectSingleNode("Name").InnerText+" -- " + EdgeUID);
                         
                     }
                     myReader.Close();
@@ -152,6 +190,31 @@ public class Uploader
                 catch (Exception e)
                 {
                     Console.WriteLine(e.ToString());
+                }
+
+                XmlNode AttributesNode = EdgeNode.SelectSingleNode("Attributes");
+
+                //Adding Edge Attributes to DB
+                for (int j = 0; j < Attributes.Length; j++)
+                {
+
+                    XmlNode SingleAttr = AttributesNode.SelectSingleNode(Attributes[j].Name);
+                    if (SingleAttr != null)
+                    {
+                        try
+                        {
+                            SqlDataReader myReader = null;
+                            SqlCommand myCommand = new SqlCommand("INSERT INTO AttrUsage VALUES (newid(), '" + EdgeUID + "', '" + Attributes[j].AttributeUID + "', '" + SingleAttr.InnerText + "')", this.MyConnection);
+                            myReader = myCommand.ExecuteReader();
+
+                            myReader.Close();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
+
+                    }
                 }
 
                 //Analizzo il Vertice collegato all'Edge appena inserito e lo inserisco nel DB
@@ -194,6 +257,31 @@ public class Uploader
                 catch (Exception e)
                 {
                     Console.WriteLine(e.ToString());
+                }
+
+                AttributesNode = SubVertex.SelectSingleNode("Attributes");
+
+                //Adding Vertex Attributes to DB
+                for (int j = 0; j < Attributes.Length; j++)
+                {
+
+                    XmlNode SingleAttr = AttributesNode.SelectSingleNode(Attributes[j].Name);
+                    if (SingleAttr != null)
+                    {
+                        try
+                        {
+                            SqlDataReader myReader = null;
+                            SqlCommand myCommand = new SqlCommand("INSERT INTO AttrUsage VALUES (newid(), '" + VertexUid + "', '" + Attributes[j].AttributeUID + "', '" + SingleAttr.InnerText + "')", this.MyConnection);
+                            myReader = myCommand.ExecuteReader();
+
+                            myReader.Close();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
+
+                    }
                 }
 
                 this.SaveToDB(VertexUid, SubVertex, depth + 1);
