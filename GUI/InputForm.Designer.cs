@@ -99,14 +99,14 @@
             this.txt_range1.Location = new System.Drawing.Point(95, 77);
             this.txt_range1.Name = "txt_range1";
             this.txt_range1.Size = new System.Drawing.Size(54, 20);
-            this.txt_range1.TabIndex = 6;
+            this.txt_range1.TabIndex = 1;
             // 
             // txt_range2
             // 
             this.txt_range2.Location = new System.Drawing.Point(177, 77);
             this.txt_range2.Name = "txt_range2";
             this.txt_range2.Size = new System.Drawing.Size(54, 20);
-            this.txt_range2.TabIndex = 7;
+            this.txt_range2.TabIndex = 2;
             // 
             // label4
             // 
