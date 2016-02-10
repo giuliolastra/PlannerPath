@@ -132,7 +132,7 @@
             this.checkbox_overwrite.Name = "checkbox_overwrite";
             this.checkbox_overwrite.Size = new System.Drawing.Size(71, 17);
             this.checkbox_overwrite.TabIndex = 10;
-            this.checkbox_overwrite.Text = "Overwrite";
+            this.checkbox_overwrite.Text = "Install DB";
             this.checkbox_overwrite.UseVisualStyleBackColor = true;
             // 
             // ConfigurationForm

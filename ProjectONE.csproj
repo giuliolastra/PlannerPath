@@ -65,15 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\SqlConnector.cs" />
     <Compile Include="GUI\ConfigurationForm.Designer.cs" />
-    <Compile Include="Engine\Attr.cs" />
-    <Compile Include="Engine\Engine.cs" />
     <Compile Include="GUI\CalculusManagerControl.cs" />
     <Compile Include="GUI\CreateTreeControl.cs" />
-    <Compile Include="Engine\Uploader.cs" />
-    <Compile Include="Engine\Calculus.cs" />
-    <Compile Include="Engine\ResultCollector.cs" />
     <Compile Include="Utility\Attribute.cs" />
     <Compile Include="GUI\CalculusManagerForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +143,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

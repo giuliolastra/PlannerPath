@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using ProjectONE.Utility;
+using System.Diagnostics;
 
 namespace ProjectONE.GUI
 {
@@ -20,18 +21,39 @@ namespace ProjectONE.GUI
             this.TempTree = new Tree(depth, splitsize, vertexesAttributes, edgesAttributes, true);
             this.TempTree.type = treetype;
 
-            Engine engine = new Engine();
 
             //Generate tree file and...
-            if(this.generateTreeFile() == false)
-                MessageBox.Show("Problems while storing file into file. Please click 0K and wait for upload to DB",messageBoxTitle);
+            if (this.generateTreeFile() == false)
+            {
+                MessageBox.Show("Problems while storing file into file. Please click 0K and wait for upload to DB", messageBoxTitle);
+            }
             else
-                MessageBox.Show("Your tree is in the file. Please click 0K and wait for upload to DB",messageBoxTitle);
-            //and then upload it to DB
-            if(!engine.uploadTree(this.TempTree.getXMLPath()))
-                MessageBox.Show("Problems while uploading tree to database",messageBoxTitle);
-            else
-                MessageBox.Show("Your tree is on the Database",messageBoxTitle);
+            {
+                MessageBox.Show("Your tree is in the file. Please click 0K and wait for upload to DB", messageBoxTitle);
+
+                var Engine = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "engine.exe",
+                        Arguments = "upload " + this.TempTree.getXMLPath(),
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
+
+                // uploaded to DB using Engine
+                Engine.Start();
+
+                String Output = "";
+
+                while (!Engine.StandardOutput.EndOfStream)
+                {
+                    Output = Output + Environment.NewLine + Engine.StandardOutput.ReadLine();
+                }
+                MessageBox.Show(Output, messageBoxTitle);
+            }
 
         }
         

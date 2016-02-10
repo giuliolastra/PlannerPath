@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectONE.GUI
 {
+
     public partial class ConfigurationForm : Form
     {
 
@@ -47,7 +43,7 @@ namespace ProjectONE.GUI
         /// <returns>true if saving succeded</returns>
         private bool save(bool overwrite)
         {
-            if (!overwrite && File.Exists(Directory.GetCurrentDirectory() + @"\mssql.conf"))
+            if (File.Exists(Directory.GetCurrentDirectory() + @"\mssql.conf"))
             {
                 MessageBox.Show("Configuration file already exists");
                 return false;
@@ -62,7 +58,8 @@ namespace ProjectONE.GUI
             string dbname = this.txt_dbname.Text;
             string server = this.txt_server.Text;
 
-            try {
+            try
+            {
                 using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(Directory.GetCurrentDirectory() + @"\mssql.conf"))
                 {
@@ -72,7 +69,7 @@ namespace ProjectONE.GUI
                     file.WriteLine("SERVER: " + server);
                 }
             }
-            catch(System.IO.IOException e)
+            catch (System.IO.IOException e)
             {
                 //We protect ourselves from infinite calls to save()
                 if (!alreadyCalled)
@@ -88,12 +85,46 @@ namespace ProjectONE.GUI
                 }
             }
 
+            //If Install DB is checked it installs the DB
+            if (overwrite)
+            {
+                //Connessione to DB
+                SqlConnector SqlConn = new SqlConnector();
+                SqlConnection MyConnection = new SqlConnection("user id=" + SqlConn.Username + ";" +
+                                               "password=" + SqlConn.Password + ";server=" + SqlConn.Server + ";" +
+                                               "Trusted_Connection=yes;" +
+                                               "database=" + SqlConn.Database + "; " +
+                                               "connection timeout=30");
+                try
+                {
+                    MyConnection.Open();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+
+                //Installing the DB
+                try
+                {
+                    SqlDataReader myReader = null;
+                    SqlCommand myCommand = new SqlCommand(this.InstallQuery, MyConnection);
+                    myReader = myCommand.ExecuteReader();
+
+                    myReader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
+
             return true;
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (this.txt_dbname.Text.Equals("") || this.txt_password.Text.Equals("") || this.txt_server.Text.Equals("") || this.txt_username.Text.Equals(""))
+            if (this.txt_dbname.Text.Equals("") || this.txt_server.Text.Equals("") || this.txt_username.Text.Equals(""))
             {
                 MessageBox.Show("Please insert all the required fields!");
                 return;
@@ -116,5 +147,82 @@ namespace ProjectONE.GUI
             this.txt_username.Text = "";
             this.txt_server.Text = "";
         }
+
+        private String InstallQuery = @"
+/* Creazione Tabella Vertex */
+create table Vertex 
+(   
+    VertexUid uniqueidentifier,   
+    Name varchar(100),   
+    Type varchar(100),   
+    Depth int,   
+    PreviousEdgeUid uniqueidentifier,   
+    CONSTRAINT [Vertex_pk] PRIMARY KEY CLUSTERED
+    (   
+        [VertexUid] ASC   
+    )    
+)   
+
+/*creazione tabella Edge*/ 
+create table Edge 
+(  
+    EdgeUid uniqueidentifier,   
+    StartVertexUid uniqueidentifier,   
+    EndVertexUid uniqueidentifier,   
+    CONSTRAINT [Edge_pk] PRIMARY KEY CLUSTERED    
+    (   
+        [EdgeUid] ASC   
+    )   
+)   
+   
+/* Creazione Tabella AttrDef */   
+create table AttrDef 
+(   
+    AttrDefUid uniqueidentifier,   
+    Name varchar(50),   
+    CONSTRAINT [AttrDef_pk] PRIMARY KEY CLUSTERED    
+    (   
+        [AttrDefUid] ASC   
+    )   
+)   
+   
+/*creazione tabella AttrUsage*/  
+create table AttrUsage   
+(   
+    AttrUsageUid uniqueidentifier,   
+    ObjectUid uniqueidentifier,   
+    AttrDefUid uniqueidentifier ,  
+    AttrValue varchar(1000),   
+    CONSTRAINT [AttrUsage _pk] PRIMARY KEY CLUSTERED    
+    (   
+        [AttrUsageUid] ASC,   
+        [ObjectUid] ASC   
+    )
+)   
+
+
+/* Altering Tables  adding UIDs */
+
+alter table Edge add  default (newsequentialid()) FOR EdgeUid   
+   
+alter table AttrDef add  default (newsequentialid()) FOR AttrDefUid   
+   
+alter table AttrUsage add  default (newsequentialid()) FOR AttrUsageUid   
+
+/* Altering Tables adding Foreign Keys */
+
+ALTER TABLE Edge  WITH CHECK ADD  CONSTRAINT [EndVertex_to_Edge] FOREIGN KEY([EndVertexUid])   
+REFERENCES [Vertex] ([VertexUid])   
+   
+ALTER TABLE Edge  WITH CHECK ADD  CONSTRAINT [StartVertex_to_Edge] FOREIGN KEY([StartVertexUid])   
+REFERENCES [Vertex] ([VertexUid])   
+
+alter table Vertex add  default (newsequentialid()) FOR VertexUid 
+ALTER TABLE Vertex  WITH CHECK ADD  CONSTRAINT [PreviousEdge_to_Vertex] FOREIGN KEY([PreviousEdgeUid])   
+REFERENCES [Edge] ([EdgeUid])   
+
+ALTER TABLE Vertex  WITH CHECK ADD  CONSTRAINT [Vertex_to_PreviousEdge] FOREIGN KEY([PreviousEdgeUid])   
+REFERENCES [Edge] ([EdgeUid])            
+        ";
     }
 }

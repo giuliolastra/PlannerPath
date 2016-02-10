@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ProjectONE.GUI
 {
@@ -11,9 +8,30 @@ namespace ProjectONE.GUI
         /*parameter passing Type, vertex A and vertex B to Engine */
         public CalculusManagerControl (string type, string vertexA, string vertexB)
         {
-            Engine engine = new Engine();
-            String result = engine.performCalculus(type, vertexA, vertexB);
-            returnSum(result);
+
+            var Engine = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "engine.exe",
+                    Arguments = "calculus " + type + " " + vertexA + " " + vertexB,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+
+            // uploaded to DB using Engine
+            Engine.Start();
+
+            String Output = "";
+
+            while (!Engine.StandardOutput.EndOfStream)
+            {
+                Output = Output + Environment.NewLine + Engine.StandardOutput.ReadLine();
+            }
+
+            returnSum(Output);
         }
 
         /// <summary>

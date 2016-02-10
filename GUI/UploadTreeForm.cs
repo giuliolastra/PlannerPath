@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectONE.GUI
@@ -23,14 +18,34 @@ namespace ProjectONE.GUI
         {
             String MessageBoxTitle = "Upload Tree";
 
-            Engine engine = new Engine();
             if (txt_tree_directory.Text.Equals("") || !txt_tree_directory.Text.EndsWith(".xml") || !System.IO.File.Exists(txt_tree_directory.Text))
                 MessageBox.Show("You must enter correct fields", MessageBoxTitle);
             else
-                if(engine.uploadTree(txt_tree_directory.Text))
-                    MessageBox.Show("Tree uploaded successfully", MessageBoxTitle);
-                else
-                    MessageBox.Show("Tree not uploaded", MessageBoxTitle);
+            {
+                var Engine = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "engine.exe",
+                        Arguments = "upload " + txt_tree_directory.Text,
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
+
+                // uploaded to DB using Engine
+                Engine.Start();
+
+                String Output = "";
+
+                while (!Engine.StandardOutput.EndOfStream)
+                {
+                    Output = Output + Environment.NewLine + Engine.StandardOutput.ReadLine();
+                }
+                MessageBox.Show(Output, MessageBoxTitle);
+            }
+        }
 
         }
 
