@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace ProjectONE.Utility
+namespace PlannerPath.Utility
 {
     /*
      * Represents a tree, with SplitSize child-Vertexs and Depth levels.

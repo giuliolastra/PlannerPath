@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectONE.Properties {
+namespace PlannerPath.Properties {
     using System;
     
     
@@ -57,15 +57,6 @@ namespace ProjectONE.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una stringa localizzata simile a .
-        /// </summary>
-        internal static string icon {
-            get {
-                return ResourceManager.GetString("icon", resourceCulture);
             }
         }
     }

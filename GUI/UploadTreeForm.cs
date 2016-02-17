@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ProjectONE.GUI
+namespace PlannerPath.GUI
 {
     public partial class UploadTreeForm : Form
     {
@@ -45,8 +45,6 @@ namespace ProjectONE.GUI
                 }
                 MessageBox.Show(Output, MessageBoxTitle);
             }
-        }
-
         }
 
         //Button to choose the directory of the tree

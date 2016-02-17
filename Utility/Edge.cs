@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProjectONE.Utility
+namespace PlannerPath.Utility
 {
     /// <summary>
     /// Represents an edge of the tree, with its random-generable attributes.

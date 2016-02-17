@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ProjectONE.Utility;
+using PlannerPath.Utility;
 using System.Diagnostics;
 
-namespace ProjectONE.GUI
+namespace PlannerPath.GUI
 {
     class CreateTreeControl
     {
@@ -12,7 +12,7 @@ namespace ProjectONE.GUI
         String Path;
 
         /* create tree */
-        public CreateTreeControl(int depth, int splitsize, LinkedList<ProjectONE.Utility.Attribute> vertexesAttributes, LinkedList<ProjectONE.Utility.Attribute> edgesAttributes, String path, String treetype)
+        public CreateTreeControl(int depth, int splitsize, LinkedList<PlannerPath.Utility.Attribute> vertexesAttributes, LinkedList<PlannerPath.Utility.Attribute> edgesAttributes, String path, String treetype)
         {
             String messageBoxTitle = "Create Tree";
 

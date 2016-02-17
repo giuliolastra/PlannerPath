@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ProjectONE.GUI
+namespace PlannerPath.GUI
 {
     class CalculusManagerControl
     {

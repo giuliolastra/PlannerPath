@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ProjectONE.GUI
+namespace PlannerPath.GUI
 {
     public partial class CalculusManagerForm : Form
     {

@@ -3,7 +3,7 @@
  */
 using System;
 
-namespace ProjectONE.Utility
+namespace PlannerPath.Utility
 {
     class MyRandom
     {

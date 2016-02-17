@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectONE.Utility
+namespace PlannerPath.Utility
 {
     /*
      * Represents an attribute (for example PTime = 8). It is attached to a Vertex or to an edge.

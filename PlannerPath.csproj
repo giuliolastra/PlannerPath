@@ -102,16 +102,11 @@
     <Compile Include="GUI\ConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Utility\SqlConnector.cs" />
     <Compile Include="Utility\MyRandom.cs" />
     <Compile Include="Utility\Tree.cs" />
     <Compile Include="Utility\Vertex.cs" />
     <Compile Include="Utility\Edge.cs" />
-    <Compile Include="GUI\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\ConfigurationForm.resx" />
@@ -127,9 +122,6 @@
     <EmbeddedResource Include="GUI\MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UploadTreeForm.resx">
       <DependentUpon>UploadTreeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,7 +135,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,9 +161,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="micron.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

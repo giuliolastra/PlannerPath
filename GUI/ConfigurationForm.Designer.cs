@@ -1,4 +1,4 @@
-﻿namespace ProjectONE.GUI
+﻿namespace PlannerPath.GUI
 {
     partial class ConfigurationForm
     {

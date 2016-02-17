@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ProjectONE.GUI
+namespace PlannerPath.GUI
 {
     public partial class CreateTreeForm : Form
     {
-        private LinkedList<ProjectONE.Utility.Attribute> verattr { get; set; }
-        private LinkedList<ProjectONE.Utility.Attribute> edgeattr { get; set; }
+        private LinkedList<PlannerPath.Utility.Attribute> verattr { get; set; }
+        private LinkedList<PlannerPath.Utility.Attribute> edgeattr { get; set; }
 
         public CreateTreeForm()
         {
             InitializeComponent();
             this.Location = new Point((Screen.FromControl(this).Bounds.Width - this.Width) / 2, (Screen.FromControl(this).Bounds.Height - this.Height) / 2);
-            this.verattr = new LinkedList<ProjectONE.Utility.Attribute>();
-            this.edgeattr = new LinkedList<ProjectONE.Utility.Attribute>();
+            this.verattr = new LinkedList<PlannerPath.Utility.Attribute>();
+            this.edgeattr = new LinkedList<PlannerPath.Utility.Attribute>();
         }
 
 
@@ -31,10 +31,10 @@ namespace ProjectONE.GUI
         /// Adds a new attribute to vertexes
         /// </summary>
         /// <param name="a"></param>
-        public void AppendVertexAttribute(ProjectONE.Utility.Attribute a)
+        public void AppendVertexAttribute(PlannerPath.Utility.Attribute a)
         {
             if (this.verattr == null)
-                this.verattr = new LinkedList<ProjectONE.Utility.Attribute>();
+                this.verattr = new LinkedList<PlannerPath.Utility.Attribute>();
             this.verattr.AddLast(a);
         }
 
@@ -42,11 +42,11 @@ namespace ProjectONE.GUI
         /// Adds a new attribute to edges
         /// </summary>
         /// <param name="a"></param>
-        private void AppendEdgeAttribute(ProjectONE.Utility.Attribute a)
+        private void AppendEdgeAttribute(PlannerPath.Utility.Attribute a)
         {
             //Console.WriteLine(a.ToString());
             if (this.edgeattr == null)
-                this.edgeattr = new LinkedList<ProjectONE.Utility.Attribute>();
+                this.edgeattr = new LinkedList<PlannerPath.Utility.Attribute>();
             this.edgeattr.AddLast(a);
         }
 
@@ -72,10 +72,10 @@ namespace ProjectONE.GUI
                 switch (cbsel)
                 {
                     case "String":
-                        this.AppendVertexAttribute(new ProjectONE.Utility.Attribute(nomeattr, ProjectONE.Utility.Attribute.AttributeType.STRING, 0, 0));
+                        this.AppendVertexAttribute(new PlannerPath.Utility.Attribute(nomeattr, PlannerPath.Utility.Attribute.AttributeType.STRING, 0, 0));
                         break;
                     case "Integer":
-                        this.AppendVertexAttribute(new ProjectONE.Utility.Attribute(nomeattr, ProjectONE.Utility.Attribute.AttributeType.INT, int.Parse(range0), int.Parse(range1)));
+                        this.AppendVertexAttribute(new PlannerPath.Utility.Attribute(nomeattr, PlannerPath.Utility.Attribute.AttributeType.INT, int.Parse(range0), int.Parse(range1)));
                         break;
                  }
             }
@@ -95,10 +95,10 @@ namespace ProjectONE.GUI
                 switch (cbsel)
                 {
                     case "String":
-                        this.AppendEdgeAttribute(new ProjectONE.Utility.Attribute(nomeattr, ProjectONE.Utility.Attribute.AttributeType.STRING, 0, 0));
+                        this.AppendEdgeAttribute(new PlannerPath.Utility.Attribute(nomeattr, PlannerPath.Utility.Attribute.AttributeType.STRING, 0, 0));
                         break;
                     case "Integer":
-                        this.AppendEdgeAttribute(new ProjectONE.Utility.Attribute(nomeattr, ProjectONE.Utility.Attribute.AttributeType.INT, int.Parse(range0), int.Parse(range1)));
+                        this.AppendEdgeAttribute(new PlannerPath.Utility.Attribute(nomeattr, PlannerPath.Utility.Attribute.AttributeType.INT, int.Parse(range0), int.Parse(range1)));
                         break;
                 }
             }

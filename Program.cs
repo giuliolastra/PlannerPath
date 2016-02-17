@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProjectONE.GUI;
+using PlannerPath.GUI;
 
-namespace ProjectONE
+namespace PlannerPath
 {
     static class Program
     {

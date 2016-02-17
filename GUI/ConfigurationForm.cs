@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PlannerPath.Utility;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace ProjectONE.GUI
+namespace PlannerPath.GUI
 {
 
     public partial class ConfigurationForm : Form
