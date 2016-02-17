@@ -1,7 +1,7 @@
 # PlannerPath
-Software Engineering Project
+Software Engineering Project.
 
-* SQL Folder contains the SQL files that you need to execute to create Database and Triggers. 
+ **NOTICE**: Engine for run this project:  https://github.com/giuliolastra/Engine
 
 To clone use:
 ```
